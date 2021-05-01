@@ -1,6 +1,6 @@
 {
   "name": "squirrel_util",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "utilitaries",
   "main": "index.js",
   "directories": {
