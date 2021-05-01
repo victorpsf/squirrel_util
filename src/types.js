@@ -11,7 +11,7 @@ const verify = function (value) {
     },
     isNumber() {
       if (this.isNullOrUndefined()) return false
-      return type === 'number'
+      return type === 'number' || type === 'bigint'
     },
     isBoolean() {
       if (this.isNullOrUndefined()) return false
@@ -85,6 +85,36 @@ const verify = function (value) {
           return /^(\d{2}\:\d{2}\:\d{2})$/g.test(value)
         default:
           return false
+      }
+    },
+    getNumber() {
+      if (this.isString()) {
+        let exec = /[0-9]+/.exec(value)
+        if (!exec) return 0
+        return (parseInt(exec[0]))? parseInt(exec[0]): 0
+      } else if (this.isNumber()) {
+        return value
+      } else {
+        return 0
+      }
+    },
+    getFloat() {
+      if (this.isNumber()) {
+        return value
+      }
+      else if (this.isString()) {
+        let _value_ = value.replace(/\,/g, '.')
+
+        let exec = /[0-9\.]+/.exec(_value_)
+
+        if (!exec) return 0
+        _value_ = exec[0]
+
+        let [first, ...args] = _value_.split('.')
+        first += '.' + args.join('')
+        return parseFloat(first)
+      } else {
+        return 0
       }
     }
   }

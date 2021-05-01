@@ -17,6 +17,8 @@ declare namespace Verify {
     isUndefined(): boolean
     isNullOrUndefined(): boolean
     validator(validate: Types.TypeValidate): boolean
+    getNumber(): number
+    getFloat(): number
   }
 }
 
