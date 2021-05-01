@@ -10,6 +10,7 @@ declare namespace Verify {
     isArray(): boolean
     isBuffer(): boolean
     empty(): boolean
+    length(): number
     isNull(): boolean
     isDate(): boolean
     isFunction(): boolean

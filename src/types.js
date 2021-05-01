@@ -30,21 +30,24 @@ const verify = function (value) {
       return type === 'object' && value instanceof Buffer && Buffer.isBuffer(value) 
     },
     empty() {
+      return this.length() === 0
+    },
+    length() {
       switch (type) {
         case 'object':
-          if (this.isDate()) return (value.toString() === 'Invalid Date') ? true: false
-          else if (this.isArray()) return value.length === 0
-          else if (this.isBuffer()) return value.byteLength === 0 || value.length === 0
-          else if (this.isObject()) return Object.keys(value).length === 0
-          else return true
+          if (this.isDate()) return (value.toString() === 'Invalid Date') ? 0: 1
+          else if (this.isArray()) return value.length
+          else if (this.isBuffer()) return value.byteLength || value.length
+          else if (this.isObject()) return Object.keys(value).length
+          else return 0
         case 'number':
-          return value === 0
+          return value
         case 'bigint':
-          return value === 0
+          return value
         case 'string':
-          return value.length === 0
+          return value.length
         default:
-          return true
+          return 0
       }
     },
     isNull() {
