@@ -89,9 +89,14 @@ const verify = function (value) {
     },
     getNumber() {
       if (this.isString()) {
-        let exec = /[0-9]+/.exec(value)
+        let exec = /[0-9\-]+/.exec(value)
         if (!exec) return 0
-        return (parseInt(exec[0]))? parseInt(exec[0]): 0
+
+        let _value_ = exec[0]
+        let negative = /\-/g.test(_value_)
+        _value_ = (negative) ? '-' + _value_.replace(/\-/g, '') : _value_;
+
+        return parseInt(_value_)
       } else if (this.isNumber()) {
         return value
       } else {
@@ -105,10 +110,13 @@ const verify = function (value) {
       else if (this.isString()) {
         let _value_ = value.replace(/\,/g, '.')
 
-        let exec = /[0-9\.]+/.exec(_value_)
+        let exec = /[0-9\.\-]+/.exec(_value_)
 
         if (!exec) return 0
         _value_ = exec[0]
+
+        let negative = /\-/g.test(_value_)
+        _value_ = (negative) ? '-' + _value_.replace(/\-/g, '') : _value_
 
         let [first, ...args] = _value_.split('.')
         first += '.' + args.join('')
