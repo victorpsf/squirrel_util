@@ -92,4 +92,32 @@ module.exports = class Util {
     type.mime = mime
     return type
   }
+
+  static in_array(array, value) {
+    return (new Util()).in_array(array, value)
+  }
+
+  static keyJSON(json, key) {
+    return (new Util()).keyJSON(json, key)
+  }
+
+  static valueJSON(json, value) {
+    return (new Util()).valueJSON(json, value)
+  }
+
+  in_array(array = [], value) {
+    return array.indexOf(value) >= 0
+  }
+
+  keyJSON(json = {}, key) {
+    return Object.keys(json).indexOf(key) >= 0
+  }
+
+  valueJSON(json = {}, value) {
+    let filter = Object.values(json).filter(function (val, index, array) {
+      return val == value
+    });
+
+    return filter.length > 0
+  }
 }

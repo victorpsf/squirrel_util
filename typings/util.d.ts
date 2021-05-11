@@ -58,6 +58,14 @@ declare class Util {
 
   static info(value: any): Util.InfoResult
   info(value: any): Util.InfoResult
+
+  static in_array(array: any[], value: any): boolean;
+  static keyJSON(json: object, key: string | number | symbol): boolean;
+  static valueJSON(json: object, value: any): boolean;
+
+  in_array(array: any[], value: any): boolean;
+  keyJSON(json: object, key: string | number | symbol): boolean;
+  valueJSON(json: object, value: any): boolean;
 }
 
 export = Util
