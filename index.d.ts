@@ -1,9 +1,9 @@
-import SquirrelMime from './typings/mime'
-import SquirrelTypes from './typings/types'
-import SquirrelUtil from './typings/util'
+import Random from "./typings/Random"
+import Types from "./typings/Types"
+import ValueMime from "./typings/ValueMime"
 
 export = {
-  Mime: SquirrelMime,
-  Types: SquirrelTypes,
-  Util: SquirrelUtil
+  Random,
+  Types,
+  ValueMime
 }
