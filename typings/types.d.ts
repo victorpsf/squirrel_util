@@ -62,9 +62,20 @@ declare namespace Verify {
      * @returns boolean
      */
     IsFunction(): boolean;
+    /**
+     * Obtem construtor do valor
+     * 
+     * @returns any
+     */
+    GetConstructor(): any;
+  }
+
+  interface Verify {
+    Equal (param1: any, param2: any): boolean;
   }
 }
 
-declare function Verify(value: any): Verify.TypesInstance
+declare function Verify(value: any) : Verify.TypesInstance
+
 
 export = Verify

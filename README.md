@@ -43,6 +43,7 @@ console.log(
 - [IsNumber](#isnumber)
 - [IsObject](#isobject)
 - [IsString](#isstring)
+- [Equal](#equal)
 
 #### GetType
 
@@ -272,6 +273,53 @@ console.log(
   Types(0).IsString()
 )
 // true
+```
+
+#### GetType
+
+Não verifica igualdade de valor mas sim te tipo de valor.
+
+ex:
+
+<ul>
+  <li>
+    string === number = false
+  </li>
+  <li>
+    string === string = true
+  </li>
+  <li>
+    string === undefined = false
+  </li>
+</ul>
+
+Lembrando que a verificação vai pelo construtor da classe e não pelo tipo, exemplo: 
+
+<ul>
+  <li>
+    "5".constructor === 5.constructor
+  </li>
+</ul>
+
+Não tente reproduzir este caso ele pode dar erro, mas é uma representação de verificação desta função.
+
+``` js
+const { Types } = require('squirrel_util')
+
+console.log(
+  Types.Equal("5", 5)
+)
+// false
+
+console.log(
+  Types.Equal("5", "5")
+)
+// true
+
+console.log(
+  Types.Equal("5", undefined)
+)
+// false
 ```
 
 ### MimeType valores
